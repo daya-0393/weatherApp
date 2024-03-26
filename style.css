@@ -112,6 +112,10 @@ body{
   background-color: rgba(235, 255, 252, 1.0);
 }
 
+input:-webkit-autofill:focus {
+  transition: background-color 0s 600000s, color 0s 600000s !important;
+}
+
 @media all and (max-width: 520px) {
   .card{
     padding: 20px;

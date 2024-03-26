@@ -27,7 +27,7 @@ async function checkWeather(e){
   const data = await response.json();
   const weatherIconValue = data.weather[0].main;
 
-  document.querySelector('.weather-icon').setAttribute('src', `images/${weatherIconValue.toLowerCase()}.png`);
+  document.querySelector('.weather-icon').setAttribute('src', `public/images/${weatherIconValue.toLowerCase()}.png`);
   document.querySelector('.temp').innerHTML = Math.round(data.main.temp) + '°c';
   document.querySelector('.city').innerHTML = city;
   document.querySelector('.humidity').innerHTML = data.main.humidity + '%';
