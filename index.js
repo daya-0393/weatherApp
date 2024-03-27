@@ -4,7 +4,7 @@ const results = document.querySelector('.results');
 
 async function searchCity(){
   const city = document.getElementById('city-input').value;
-  const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=3&appid=${API_KEY}`);
+  const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=3&appid=${API_KEY}`);
   const data = await response.json();
   const cities = [];
   console.log(response);
