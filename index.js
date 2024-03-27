@@ -1,6 +1,8 @@
 const API_KEY = 'bd07f2c9a75f0c0307b967edf3525671';
-
 const results = document.querySelector('.results');
+const loader = document.querySelector('.loader');
+const content = document.querySelector('.weather-content');
+
 
 async function searchCity(){
   const city = document.getElementById('city-input').value;
@@ -21,8 +23,7 @@ async function searchCity(){
 }
 
 async function checkWeather(e){
-  // console.log(e.target.innerHTML);
-  const city = e.target.innerHTML;
+  const city = document.getElementById('city-input').value === '' ? 'new york' :  e.target.innerHTML;
   const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`);
   const data = await response.json();
   const weatherIconValue = data.weather[0].main;
@@ -34,6 +35,12 @@ async function checkWeather(e){
   document.querySelector('.wind').innerHTML = data.wind.speed + ' m/s';
   results.style.display = 'none';
 }
+
+document.addEventListener("DOMContentLoaded", async () => {
+  await checkWeather();
+  loader.classList.add('hidden');
+  content.classList.remove('hidden');
+});
 
 document.getElementById('search-btn').addEventListener('click', searchCity);
 document.getElementById('city-input').addEventListener('keydown', (event) => event.key === 'Enter' && searchCity());
